@@ -1,0 +1,75 @@
+#home {
+  font-family: "Arimo", sans-serif;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 1.4em;
+
+  // div를 가로로 정렬하기 위한
+  //display: flex
+  //flex-direction: row
+
+  .mainhome {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .maincenter {
+    margin-top: 90px;
+  }
+
+  .hello {
+    margin-bottom: 10px;
+  }
+
+  .saladlab {
+    font-weight: 600;
+    animation: heart-beat 1s ease-in-out infinite;
+    cursor: pointer;
+  }
+  .loginbutton {
+    margin: 25px 40px;
+    width: 268px;
+    height: 32px;
+    background-color: rgb(123, 218, 131);
+    border: none;
+    font-size: 15px;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  @keyframes heart-beat {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(1.02);
+    }
+    50% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+.homeleftimg {
+  padding-top: 50px;
+  padding-right: 25px;
+  margin: 40px;
+  height: 458px;
+}
+
+.homerightimg {
+  padding-left: 50px;
+  margin: 40px;
+  height: 520px;
+}

@@ -1,0 +1,161 @@
+<div class="popup">
+
+
+  <ng-container *ngIf="createmode">
+    <div class="realpopups">
+      <div class="infoboxs">
+
+
+        <div class="titlebox">
+          <input class="Titletext" [(ngModel)]="todotitle" type="text" placeholder="오늘의 할일 제목을 적어주세요 :>>" />
+        </div>
+
+        <div class="duedatebox">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Due Date </p>
+          </div>
+
+
+          <!-- new -material -date&time -->
+          <div class="datetime">
+            <mat-form-field>
+              <input matInput type="datetime-local" [(ngModel)]="tododuedate">>
+            </mat-form-field>
+          </div>
+          <!-- /new -material -date&time -->
+
+
+
+        </div>
+
+        <div class="statusbox">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Status </p>
+          </div>
+          <div>
+            <ng-container *ngIf="!todostatus">
+              <img (click)="statusbtncreate()" src="assets/image/circle2.png"
+                style="width:36px; margin-left:57px; margin-top:23px; cursor: pointer;">
+            </ng-container>
+            <ng-container *ngIf="todostatus">
+              <img (click)="statusbtncreate()" src="assets/image/check3.png"
+                style="width:36px; margin-left:57px; margin-top:23px; cursor: pointer;">
+            </ng-container>
+            <!--          
+            <input class="Statustext" [(ngModel)]="todostatus" type="text" placeholder="True or False" /> -->
+          </div>
+
+        </div>
+
+        <div class="contentbox">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Content</p>
+          </div>
+          <div>
+            <input class="Contenttext" [(ngModel)]="todocontent" type="text" placeholder="자유롭게 적고싶은 말 적어주세요:>>" />
+          </div>
+        </div>
+      </div>
+
+
+      <div class="btnbox3">
+        <div>
+          <button class="popupcanclebtn" (click)="popupcancle()">취소</button>
+        </div>
+        <div>
+          <button class="popupPostbtn" (click)="PostToDoData()">완료</button>
+        </div>
+      </div>
+
+
+    </div>
+
+  </ng-container>
+
+  <!-- updatemode -> class명 createmode + #2 -->
+
+  <ng-container *ngIf="updatemode">
+    <!-- 부모 자식 데이터 전달 테스트 -->
+
+
+    <div class="realpopups2">
+      <div class="infoboxs2">
+
+
+        <div class="titlebox2">
+          <input class="Titletext2" [(ngModel)]="todomdtitle" type="text" placeholder={{todocurrenttitle}} />
+        </div>
+
+        <div class="duedatebox2">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Due Date : </p>
+          </div>
+          <div class="duedateinputbox2">
+            <input class="DueDatetext2" [(ngModel)]="todomdduedate" type="text" placeholder={{todocurrentduedate}} />
+          </div>
+        </div>
+
+        <div class="statusbox2">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Status : </p>
+          </div>
+          <div>
+            <ng-container *ngIf="!todomdstatus">
+              <img (click)="statusbtnupdate()" src="assets/image/circle2.png"
+                style="width:36px; margin-left:57px; margin-top:23px; cursor: pointer;">
+            </ng-container>
+            <ng-container *ngIf="todomdstatus">
+              <img (click)="statusbtnupdate()" src="assets/image/check3.png"
+                style="width:36px; margin-left:57px; margin-top:23px; cursor: pointer;">
+            </ng-container>
+          </div>
+
+        </div>
+
+        <div class="contentbox2">
+          <div>
+            <p style="margin:20px; font-size: 20px;">Content </p>
+          </div>
+          <div>
+            <input class="Contenttext2" [(ngModel)]="todomdcontent" type="text" placeholder={{todocurrentcontent}} />
+          </div>
+        </div>
+      </div>
+
+
+      <div class="footbox">
+        <div class="foottext">
+          <div class="lineupcreate">
+            <div class="createtext">
+              생성
+            </div>
+            <div>
+              {{todocurrentcreate}} {{todocurrentcreate2}}
+            </div>
+          </div>
+          <div class="lineupupdate">
+            <div class="updatetext">
+              최종수정
+            </div>
+            <div>
+              {{todocurrentupdate}} {{todocurrentupdate2}}
+            </div>
+          </div>
+        </div>
+        <div class="btnbox2">
+
+          <div>
+            <button class="popupcanclebtn2" (click)="backtoorigin(true)">돌아가기</button>
+          </div>
+          <div>
+            <button class="popupPostbtn2" (click)="updateToDoData()">수정완료</button>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>

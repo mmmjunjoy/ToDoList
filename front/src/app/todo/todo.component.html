@@ -1,0 +1,163 @@
+<div id="todo">
+  <div>
+    <header class="todoheader">
+      <div>
+        <p class="headertext">I am Salad Man</p>
+      </div>
+      <div class="logoutbox">
+        <img (click)="logout()" class="logoutbtn" src=" assets/image/logout.png">
+      </div>
+
+    </header>
+    <ng-container *ngIf="!originalstatus">
+
+      <!-- 앞에 것이 자식 컴포넌트 변수 , 뒤에 것이 부모 컴포넌트 변수 -->
+      <app-popup (originalstate)="backtodo()" [todoid]="todoidpk" [createmode]="createpopup" [updatemode]="updatepopup"
+        [todocurrentstatus]="transPopupStatus" [todocurrenttitle]="transPopupTitle"
+        [todocurrentcontent]="transPopupContent" [todocurrentduedate]="processPopupduedate"
+        [todocurrentduedate2]="processPopupduedate2" [todocurrentcreate]="processPopupcreate"
+        [todocurrentcreate2]="processPopupcreate2" [todocurrentupdate]="processPopupupdate"
+        [todocurrentupdate2]="processPopupupdate2"></app-popup>
+
+
+    </ng-container>
+    <ng-container *ngIf="originalstatus">
+
+
+      <main class="maintodo">
+        <header class="mainheader">
+          <p class="titlename">To-Do list</p>
+          <button (click)="gotodopopup()" class="NewTaskbt">
+            + New Task
+          </button>
+        </header>
+
+        <div class="plan">
+          <p style="font-size: 20px; font-weight: bold;">plan</p>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:100px;">Status</th>
+                <th style="width:400px;">Title</th>
+                <th style="width:160px;">Due date
+                  <img src="assets/image/drag.png" (click)="resultplanduedate()"
+                    style="width:40px; height:20px; cursor: pointer;">
+                </th>
+                <th style="width:60px;">modify</th>
+                <th style="width:60px;">Delete</th>
+              </tr>
+            </thead>
+
+            <!-- ngFor 사용하여 db에 있는 data 화면에 띄우기 & ng-container 사용-->
+
+
+            <ng-container *ngFor="let tdmding of todomaining">
+
+              <tr>
+                <td><img (click)="checkstatus(tdmding[0])" src="assets/image/circle2.png"
+                    style="width:36px; margin-left:33px; margin-top:10px; cursor: pointer;"></td>
+                <td>{{tdmding[2]}}</td>
+                <td>
+                  {{tdmding[4][0]}}{{tdmding[4][1]}}{{tdmding[4][2]}}{{tdmding[4][3]}}.{{tdmding[4][5]}}{{tdmding[4][6]}}.{{tdmding[4][8]}}{{tdmding[4][9]}}
+                  {{tdmding[4][11]}}{{tdmding[4][12]}}:{{tdmding[4][14]}}{{tdmding[4][15]}} 까지
+                </td>
+
+                <!-- data- 사용하여 이미지요소 안에 데이터(id)를 담기--(x:정적인 형태의 데이터는 담겨지는거같으나 , 동적인 형태의 데이터는 담겨지지않는 현상) -->
+
+                <!-- 대체방안: deleteToDo함수에 인자값으로 동적인 변수(tdmd[0])를 넘겨주는 방법 사용 -->
+                <td id="todoids" style="cursor: pointer;"><img (click)="modifyToDo(tdmding[0])"
+                    src=" assets/image/modify.png" style="width:40px; height:37px; padding-left:20px;">
+                </td>
+
+                <td id="todoids" style="cursor: pointer;"><img (click)="deleteToDo(tdmding[0])"
+                    src=" assets/image/trash.jpg" style="width:50px; padding-left:10px; padding-top:6px;">
+                </td>
+              </tr>
+            </ng-container>
+
+            <style>
+              thead {
+                width: 100%;
+                height: 28px;
+                background-color: rgba(242, 242, 242, 1);
+                border: none;
+                text-align: left;
+              }
+            </style>
+
+          </table>
+        </div>
+
+        <div class="success">
+          <p style="font-size: 20px; font-weight: bold;">Done</p>
+          <table>
+            <thead>
+              <tr>
+                <th style="width:100px;">Status</th>
+                <th style="width:400px;">Title</th>
+                <th style="width:160px;">Due date
+                  <img src="assets/image/drag.png" (click)="resultdoneduedate()"
+                    style="width:40px; height:20px; cursor: pointer;">
+                </th>
+                <th style="width:60px;">modify</th>
+                <th style="width:60px;">Delete</th>
+              </tr>
+            </thead>
+
+            <ng-container *ngFor="let tdmdone of todomaindone">
+
+              <tr>
+                <td><img (click)="checkstatus(tdmdone[0])" src="assets/image/check3.png"
+                    style="width:40px; margin-left:30px; margin-top:10px; cursor: pointer;"></td>
+                <td>{{tdmdone[2]}}</td>
+                <td>
+                  {{tdmdone[4][0]}}{{tdmdone[4][1]}}{{tdmdone[4][2]}}{{tdmdone[4][3]}}.{{tdmdone[4][5]}}{{tdmdone[4][6]}}.{{tdmdone[4][8]}}{{tdmdone[4][9]}}
+                  {{tdmdone[4][11]}}{{tdmdone[4][12]}}:{{tdmdone[4][14]}}{{tdmdone[4][15]}} 까지
+                </td>
+
+                <!-- data- 사용하여 이미지요소 안에 데이터(id)를 담기--(x:정적인 형태의 데이터는 담겨지는거같으나 , 동적인 형태의 데이터는 담겨지지않는 현상) -->
+
+                <!-- 대체방안: deleteToDo함수에 인자값으로 동적인 변수(tdmd[0])를 넘겨주는 방법 사용 -->
+                <td id="todoids" style="cursor: pointer;"><img (click)="modifyToDo(tdmdone[0])"
+                    src=" assets/image/modify.png" style="width:40px; height:37px; padding-left:20px;">
+                </td>
+
+                <td id="todoids" style="cursor: pointer;"><img (click)="deleteToDo(tdmdone[0])"
+                    src=" assets/image/trash.jpg" style="width:50px; padding-left:10px; padding-top:6px;">
+                </td>
+              </tr>
+            </ng-container>
+            <style>
+              thead {
+                width: 100%;
+                height: 28px;
+                background-color: rgba(242, 242, 242, 1);
+                border: none;
+                text-align: left;
+              }
+
+              th {
+                padding-left: 10px;
+              }
+            </style>
+
+          </table>
+
+        </div>
+
+
+
+
+
+      </main>
+
+
+
+    </ng-container>
+
+
+
+
+
+  </div>
+</div>
