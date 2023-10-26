@@ -29,9 +29,9 @@
 
 
 
-#### [자세한 코드 설명 - velog]([http://4can10000won.shop/](https://velog.io/@sjb2010/Code-Review-saladlab-onboarding))
+#### [자세한 코드 설명 - velog]((https://velog.io/@sjb2010/Code-Review-saladlab-onboarding))
 
-#### [회고록 - velog]([http://4can10000won.shop/swagger-ui/index.html](https://velog.io/@sjb2010/Internship-onboarding-1))
+#### [회고록 - velog]((https://velog.io/@sjb2010/Internship-onboarding-1))
 
 
 
