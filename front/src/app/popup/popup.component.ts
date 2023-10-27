@@ -17,8 +17,7 @@ export class PopupComponent implements OnInit {
   @Input() createmode = true;
   @Input() updatemode = false;
 
-  // popup - modify모드일때 현재값 불러오기 - 부모(todo)에게 전달받아 , (+) 실제 modify할떄의 변수로 사용 - ngModel 사용해서
-
+  // popup - modify모드일때 현재값 불러오기 - 부모(todo)에게 전달받아
   @Input() todocurrentstatus = false;
   @Input() todocurrenttitle = '';
   @Input() todocurrentcontent = '';
@@ -41,6 +40,11 @@ export class PopupComponent implements OnInit {
 
   // modify mode 일때 변수
   todomdstatus = false;
+
+  // 위의 @input 데코레이터 변수로 대체 가능 , 즉 불필요
+  // todomdtitle = '';
+  // todomdcontent = '';
+  // todomdduedate = '';
 
   // session 에 저장되어있는 user_id를 사용해서 todocreate 할때 기입할 변수
   userid = '';
