@@ -34,4 +34,30 @@
 #### [회고록 - velog](https://velog.io/@sjb2010/Internship-onboarding-1)
 
 
+## if you want this web 🍎
+
+
+
+> git clone https://github.com/mmmjunjoy/ToDoList.git
+
+> BE
+> > cd api
+> > 
+> > python manage.py runserver
+> >
+> requirements.txt
+> > asgiref==3.5.2
+Django==4.1.3
+sqlparse==0.4.3
+
+
+> FE
+> >
+> > cd front
+> >
+> > npm install --save--dev @angular-devkit/build-angular
+> >
+> > ng serve
+
+
 
