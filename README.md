@@ -27,13 +27,17 @@
 
 ![](https://velog.velcdn.com/images/sjb2010/post/1b27438c-0fbf-4830-9a78-01d5e8896c8b/image.png)
 
+
 ## click ☑️
 
 
 
 #### [자세한 코드 설명 - velog](https://velog.io/@sjb2010/Code-Review-saladlab-onboarding)
 
+#### [Refactoring - velog](https://velog.io/@sjb2010/Code-Review-Saladlab-Onboarding-2-feedback)
+
 #### [회고록 - velog](https://velog.io/@sjb2010/Internship-onboarding-1)
+
 
 
 ## if you want this web 🍎
