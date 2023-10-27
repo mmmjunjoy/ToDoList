@@ -3,7 +3,7 @@
 
 <div align="center">
 
-![image](https://github.com/mmmjunjoy/ToDoList/assets/121990539/20972869-d51b-4132-8c07-6391319952e3)
+![image](https://github.com/mmmjunjoy/ToDoList/assets/121990539/876960ab-108f-40d5-84c0-aa99738832ab)
 
 
 
