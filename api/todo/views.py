@@ -222,10 +222,11 @@ def todomodify(request):
 
         # 2. 각 컬럼 (4가지 - status , title , content , due_date ) 비교
 
+    
         newstatus = modifyPayload['tdmdstatus']
         newtitle = modifyPayload['tdmdtitle']
-        newcontent = ''
-        newduedate = ''
+        newcontent = modifyPayload['tdmdcontent']
+        newduedate = modifyPayload['tdmdduedate']
 
         # 2 - * 수정하기 버튼 클릭 시 그 시점으로 업데이트 처리하여 수정된 날짜 나오게 하기 위한 것
         newupdate= datetime.now()  
@@ -237,38 +238,44 @@ def todomodify(request):
 
         else : 
             print( "status is modify")
+
       
+        # 클라이언트에서 새로운 값이 null일 경우는 원래의 값을 던져주게끔 수정
+        
+        # 즉, 아래와 같은 null처리 코드 불필요 
+        # 
+        # <----------------------기존 modify main 코드 --------------------->
  
-        # 2-2 -> title 비교      -> 수정  ok
-        if modifyPayload['tdmdtitle'] == '':
-            newtitle = currentToDo[0]['title']
-            print("title is same")
+        # # 2-2 -> title 비교      -> 수정  ok
+        # if modifyPayload['tdmdtitle'] == '':
+        #     newtitle = currentToDo[0]['title']
+        #     print("title is same")
           
-        else : 
-            print( "title is modify")
+        # else : 
+        #     print( "title is modify")
 
 
-        # 2-3 -> content 비교   -> 수정 ok
-        if modifyPayload['tdmdcontent'] :
-            newcontent = modifyPayload['tdmdcontent']
-            print('컨텐트 ',modifyPayload['tdmdcontent'] )
+        # # 2-3 -> content 비교   -> 수정 ok
+        # if modifyPayload['tdmdcontent'] :
+        #     newcontent = modifyPayload['tdmdcontent']
+        #     print('컨텐트 ',modifyPayload['tdmdcontent'] )
            
-        else :
-            newcontent = currentToDo[0]['content']
-            print("content is same")
+        # else :
+        #     newcontent = currentToDo[0]['content']
+        #     print("content is same")
          
-        # 2-4 -> due date 비교   -> 수정 ok
-        if modifyPayload['tdmdduedate'] == '':
-            newduedate = currentToDo[0]['due_date']
-            print("duedate is same")
-        else :
+        # # 2-4 -> due date 비교   -> 수정 ok
+        # if modifyPayload['tdmdduedate'] == '':
+        #     newduedate = currentToDo[0]['due_date']
+        #     print("duedate is same")
+        # else :
 
-            newduedate = modifyPayload['tdmdduedate']
+        #     newduedate = modifyPayload['tdmdduedate']
+
+        # <----------------------/기존 modify main 코드 --------------------->
 
 
-        # 새로운 값으로 대체
-
-        print("--------------------------------------------------------------------")
+    
 
         print('새로운 값: ' , newstatus, newtitle,newcontent,newduedate )
 
