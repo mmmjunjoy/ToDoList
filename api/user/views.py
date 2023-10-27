@@ -112,33 +112,52 @@ def login(request):
     LoginPassword = LoginPayload["loginpasswords"]
     print("사용자입력pw : " ,LoginPassword)
 
-    #1.DB username 확인 
-
-    UsernameSet = UserSignup.objects.all().values_list("user_name" , flat = True)
-    print(UsernameSet)
 
 
-
+    # username부터 일치하지 않을때 보내줄 값
     
-    # 1단계, username 일치하는지 확인
-
     loginusernamefail = {
       "result" : False
     }
 
-    x =0 
-    for i in UsernameSet:
-      if i == LoginUsername:
-        x += 1
-        print("x", x)
-      else:
-        print("bad")
-      
-    if x ==0:
-      print("username fail _ firstfail")
-      return JsonResponse(loginusernamefail)
-    
+    #<!----------------기존 username 확인 코드-------------------> 
 
+    #1.DB username 확인 
+
+    # UsernameSet = UserSignup.objects.all().values_list("user_name" , flat = True)
+    # print(UsernameSet)
+
+    # 1단계, username 일치하는지 확인
+
+    # x =0 
+    # for i in UsernameSet:
+    #   if i == LoginUsername:
+    #     x += 1
+    #     print("x", x)
+    #   else:
+    #     print("bad")
+      
+    # if x ==0:
+    #   print("username fail _ firstfail")
+    #   return JsonResponse(loginusernamefail)
+    
+    #<!----------------/기존 username 확인 코드-------------------> 
+
+
+
+
+    #<!----------------변경된 username 확인 코드 -------------------> 
+    
+    #1.DB  username 확인 코드 리팩토링 -> exists()사용
+
+    Usernametrue = UserSignup.objects.filter(user_name =LoginUsername).exists()
+
+    print("username이 유효한지", Usernametrue)
+
+    if Usernametrue == False:
+       return JsonResponse(loginusernamefail)
+
+    #<!----------------/변경된 username 확인 코드 -------------------> 
 
 
     #2.DB에서 해당 user -> password 확인
