@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'todo',
+
+    # drf 사용하기 위한
     'rest_framework',
     
 
