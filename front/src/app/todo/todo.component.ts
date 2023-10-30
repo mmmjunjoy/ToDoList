@@ -202,7 +202,8 @@ export class TodoComponent implements OnInit {
       .subscribe(
         (json) => {
           console.log('status success');
-          location.reload();
+          this.getToDoPlan();
+          this.getToDoDone();
         },
         (error) => {
           console.log('error');
